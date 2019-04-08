@@ -32,7 +32,13 @@ function fail(item) {
 // the durability restored to 100
 
 function repair(item) {
-  return { ...item };
+  if(item === Number(item)){
+    let newItem = 100 + item - item
+    console.log(newItem)
+    return newItem;
+  }else{
+    return 'Can not be null or a string'
+}
 }
 
 // uncomment for stretch
