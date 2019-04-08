@@ -11,17 +11,7 @@ module.exports = {
 // - The durability of the item is not changed.
 
 function succeed(item) {
-  if(item === Number(item)){
-  if(item < Number(20)){
-    console.log(item)
-    return ++item
-  } else if(item === Number(20)){
-    console.log(item)
-    return item
-  }
-}else{
-  return 'Can not be null or a string'
-}
+  
 }
 
 // If the item's enhancement is less than 15, 
@@ -42,13 +32,25 @@ function fail(item) {
 // the durability restored to 100
 
 function repair(item) {
-  if(item === Number(item)){
-    let newItem = 100 + item - item
-    // console.log(newItem)
-    return newItem;
-  }else{
-    return 'Can not be null or a string'
-}
+  if(
+    typeof item.name !== "string" ||
+    typeof item.enhancement !== "number" ||
+    typeof item.durability !== "number" ||
+    item.enhancement > 20 ||
+    item.enhancement < 0  ||
+    item.durability > 100 ||
+    item.durability < 0
+    ){
+    return 'Error with your enhancement';
+  }
+  else if(item.durability === 100){
+    return 'Durability Maxed'
+  }
+  else{
+    let newItem = item
+    newItem.durability = 100
+    return newItem
+  }
 }
 
 // uncomment for stretch
