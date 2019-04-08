@@ -4,6 +4,7 @@ module.exports = {
   repair,
   // get,
 };
+const maxed = 'Already Maxed'
 
 // The item's enhancement increases by 1.
 // - If the item enhancement level is 20, 
@@ -11,7 +12,27 @@ module.exports = {
 // - The durability of the item is not changed.
 
 function succeed(item) {
-  
+  if(
+    typeof item.name !== "string" ||
+    typeof item.enhancement !== "number" ||
+    typeof item.durability !== "number" ||
+    item.enhancement > 20 ||
+    item.enhancement < 0  ||
+    item.durability > 100 ||
+    item.durability < 0
+    ){
+    return 'Error with your enhancement';
+  }
+  else if(item.enhancement === 20){
+    console.log(maxed)
+    return (item)
+  }
+  else{
+    let newItem = item
+    newItem.enhancement++
+    console.log(newItem)
+    return newItem
+  }
 }
 
 // If the item's enhancement is less than 15, 
@@ -44,7 +65,8 @@ function repair(item) {
     return 'Error with your enhancement';
   }
   else if(item.durability === 100){
-    return 'Durability Maxed'
+    // console.log(maxed)
+    return item
   }
   else{
     let newItem = item
