@@ -11,7 +11,17 @@ module.exports = {
 // - The durability of the item is not changed.
 
 function succeed(item) {
-  return { ...item };
+  if(item === Number(item)){
+  if(item < Number(20)){
+    console.log(item)
+    return ++item
+  } else if(item === Number(20)){
+    console.log(item)
+    return item
+  }
+}else{
+  return 'Can not be null or a string'
+}
 }
 
 // If the item's enhancement is less than 15, 
@@ -34,7 +44,7 @@ function fail(item) {
 function repair(item) {
   if(item === Number(item)){
     let newItem = 100 + item - item
-    console.log(newItem)
+    // console.log(newItem)
     return newItem;
   }else{
     return 'Can not be null or a string'
