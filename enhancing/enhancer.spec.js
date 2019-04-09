@@ -8,7 +8,7 @@ describe('Item Enhancements', () => {
             expect(repair({
                 name: "Yoda",
                 type: "weapon",
-                durability: 50,
+                durability: 80,
                 enhancement: 20
             })).toEqual({
                 name: "Yoda",
@@ -63,7 +63,28 @@ describe('Item Enhancements', () => {
     describe('Fail', () => {
         
         test('should enhancement fail, duability drops', () => {
-            
+            expect(fail({
+                name: "Yoda",
+                type: "weapon",
+                durability: 100,
+                enhancement: 20
+            })).toEqual({
+                name: "Yoda",
+                type: "weapon",
+                durability: 90,
+                enhancement: 19
+            });
+            expect(succeed({
+                name: "Obi-Wan",
+                type: "weapon",
+                durability: 90,
+                enhancement: 18
+            })).toEqual({
+                name: "Obi-Wan",
+                type: "weapon",
+                durability: 80,
+                enhancement: 17
+            });
         })
         
     })

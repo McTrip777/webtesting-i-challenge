@@ -24,13 +24,13 @@ function succeed(item) {
     return 'Error with your enhancement';
   }
   else if(item.enhancement === 20){
-    console.log(maxed)
-    return (item)
+    // console.log(maxed)
+    return item
   }
   else{
     let newItem = item
     newItem.enhancement++
-    console.log(newItem)
+    // console.log(newItem)
     return newItem
   }
 }
@@ -44,7 +44,36 @@ function succeed(item) {
 // (17 goes down to 16, 18 goes down to 17).
 
 function fail(item) {
-  return { ...item };
+  if(
+    typeof item.name !== "string" ||
+    typeof item.enhancement !== "number" ||
+    typeof item.durability !== "number" ||
+    item.enhancement > 20 ||
+    item.enhancement < 0  ||
+    item.durability > 100 ||
+    item.durability < 0
+    ){
+      return 'Error with your enhancement';
+    }
+  let newItem = item
+
+  if(item.enhancement < 15){
+    newItem.durability -= 5
+    //console.log(newItem)
+    return newItem
+  }
+  else if(item.enhancement <= 20 && item.enhancement >=15){
+    let newItem = item
+    newItem.durability -= 10
+    if(item.enhancement > 16){
+      let newItem1 = newItem
+      newItem1.enhancement -= 1
+      console.log(newItem1)
+      return newItem1
+    }
+    console.log(newItem)
+    return newItem
+  }
 }
 
 // a `repair(item)` method 
