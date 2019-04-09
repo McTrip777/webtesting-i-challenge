@@ -74,16 +74,16 @@ describe('Item Enhancements', () => {
                 durability: 90,
                 enhancement: 19
             });
-            expect(succeed({
+            expect(fail({
                 name: "Obi-Wan",
                 type: "weapon",
                 durability: 90,
-                enhancement: 18
+                enhancement: 14
             })).toEqual({
                 name: "Obi-Wan",
                 type: "weapon",
-                durability: 80,
-                enhancement: 17
+                durability: 85,
+                enhancement: 14
             });
         })
         

@@ -62,9 +62,14 @@ function fail(item) {
     //console.log(newItem)
     return newItem
   }
-  else if(item.enhancement <= 20 && item.enhancement >=15){
+  else if(
+    item.enhancement <= 20 && 
+    item.enhancement >= 15){
+
     let newItem = item
+
     newItem.durability -= 10
+    
     if(item.enhancement > 16){
       let newItem1 = newItem
       newItem1.enhancement -= 1
